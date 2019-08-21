@@ -1,41 +1,34 @@
-module.exports = {isValid,generatemultiplyArray};
+module.exports = {isValid,generatemultiplyArray,printMultiplyTable};
 
 function multiplyTable(firstNumber,secondNumber){
-    var output ="";
-    var valid = isValid(firstNumber,secondNumber)
-    if(valid){
-        return valid;
-    }
-    var multiplyArray = generatemultiplyArray(firstNumber,secondNumber);
-    output = printMultiplyTable(generatemultiplyArray)
+   
 }
 
 function isValid(firstNumber,secondNumber){
-    return firstNumber < secondNumber;
+    return firstNumber <= secondNumber;
 }
 
 function generatemultiplyArray(firstNumber,secondNumber){
-    // var generagedArray =[];
-    // var times = secondNumber-firstNumber+1;
-    // for (let rowIndex = 0; rowIndex < times; rowIndex++){
-    //     var row =[];
-    //     for(let colunmIndex =0;colunmIndex<(rowIndex+1);colunmIndex++){
-    //         var result = ((colunmIndex+1)*(rowIndex+1))
-    //         row.push(result)
-    //     }
-    // }
-    var result = new Array();
-    for(let i = firstNumber; i < secondNumber + 1; i++){
-        let list = new Array();
-        for(let j = firstNumber; j <= i; j++){
-            let tmpString = j + "*" + i + "=" + i * j;
-            list.push(tmpString);
+    let array = new Array();
+    for(let i=firstNumber;i<=secondNumber;i++){
+        let arraycolum = new Array();
+        for (let j = firstNumber; j <= i; j++) {
+            arraycolum.push(j +'*' + i + '=' + i*j)
+            
         }
-        result.push(list);
+    array.push(arraycolum)
     }
-    return result;
+    return array
 }
 
 function printMultiplyTable(generatemultiplyArray){
-        console.log(result);
+    let output ='';
+    let arraylist = generatemultiplyArray;
+    for (let i = 0; i < arraylist.length; i++) {
+        for (let j = 0; j < arraylist[i].length; j++) {
+            output = output + arraylist[i][j] + ' ';           
+        }
+        output = output + '\n';
+    }      
+    return output;
 }
